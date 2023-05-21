@@ -87,11 +87,39 @@ const TreeView = () => {
 }
 
 const App = () => {
+  const zoomOptions = [25, 30, 40, 50, 60, 70, 80, 90, 100, 125, 150]
+  const [zoom, setZoom] = useState(100)
+  const handleZoomOut = () =>
+    setZoom(zoomOptions[zoomOptions.indexOf(zoom) - 1] || zoom)
+
+  const handleZoomIn = () =>
+    setZoom(zoomOptions[zoomOptions.indexOf(zoom) + 1] || zoom)
+
+  const handleResetZoom = () => setZoom(100)
+
+  const handleSelectZoom = (e: any) => setZoom(parseFloat(e.target.value))
+
   return (
     <>
-      <Header />
+      <Header
+        zoom={zoom}
+        zoomOptions={zoomOptions}
+        onResetZoom={handleResetZoom}
+        onZoomIn={handleZoomIn}
+        onZoomOut={handleZoomOut}
+        onSelectZoom={handleSelectZoom}
+      />
       <TreeProvider>
-        <TreeView />
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transform: `scale(${zoom / 100})`,
+          }}
+        >
+          <TreeView />
+        </div>
       </TreeProvider>
     </>
   )
