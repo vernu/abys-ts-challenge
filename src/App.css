@@ -8,6 +8,7 @@ input {
   width: 130px;
   height: 25px;
   border: 1px solid #fdfcff;
+  outline: none;
 }
 
 input:focus{

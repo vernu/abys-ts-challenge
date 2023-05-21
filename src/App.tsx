@@ -3,6 +3,7 @@ import { Node, TreeProvider } from './context/TreeContext'
 import { useTree } from './hooks/useTree'
 import './App.css'
 import Header from './components/header/Header'
+import DraggableContainer from './components/containers/DraggableContainer'
 
 interface TreeItemProps {
   node: Node
@@ -118,7 +119,9 @@ const App = () => {
             transform: `scale(${zoom / 100})`,
           }}
         >
-          <TreeView />
+          <DraggableContainer>
+            <TreeView />
+          </DraggableContainer>
         </div>
       </TreeProvider>
     </>
