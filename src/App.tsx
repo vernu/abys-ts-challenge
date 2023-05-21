@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Node, TreeProvider } from './context/TreeContext'
 import { useTree } from './hooks/useTree'
 import './App.css'
+import Header from './components/header/Header'
 
 interface TreeItemProps {
   node: Node
@@ -87,9 +88,12 @@ const TreeView = () => {
 
 const App = () => {
   return (
-    <TreeProvider>
-      <TreeView />
-    </TreeProvider>
+    <>
+      <Header />
+      <TreeProvider>
+        <TreeView />
+      </TreeProvider>
+    </>
   )
 }
 
