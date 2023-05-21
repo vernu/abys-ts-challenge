@@ -1,22 +1,17 @@
 import './Header.css'
 
 interface HeaderProps {
-  zoomOptions: number[]
-  zoom: number
-  onSelectZoom: (e: any) => void
-  onZoomIn: () => void
-  onZoomOut: () => void
-  onResetZoom: () => void
+  zoom: {
+    options: number[]
+    selected: number
+    selectZoom: (e: any) => void
+    zoomIn: () => void
+    zoomOut: () => void
+    resetZoom: () => void
+  }
 }
 
-export default function Header({
-  zoomOptions,
-  zoom,
-  onSelectZoom,
-  onZoomIn,
-  onZoomOut,
-  onResetZoom,
-}: HeaderProps) {
+export default function Header({ zoom }: HeaderProps) {
   return (
     <div className='header-container'>
       <div className='title'>
@@ -26,16 +21,16 @@ export default function Header({
 
       <div className='header-actions'>
         <button className='purple-btn'>ListView</button>
-        <button onClick={onResetZoom}>Reset</button>
-        <button onClick={onZoomOut}>-</button>
-        <select value={zoom} onChange={onSelectZoom}>
-          {zoomOptions.map((option: number) => (
+        <button onClick={zoom.resetZoom}>Reset</button>
+        <button onClick={zoom.zoomOut}>-</button>
+        <select value={zoom.selected} onChange={zoom.selectZoom}>
+          {zoom.options.map((option: number) => (
             <option key={option} value={option}>
               {option}%
             </option>
           ))}
         </select>
-        <button onClick={onZoomIn}>+</button>
+        <button onClick={zoom.zoomIn}>+</button>
       </div>
     </div>
   )

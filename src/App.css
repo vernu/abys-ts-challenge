@@ -15,17 +15,6 @@ input:focus{
   outline: 'none';
 }
 
-/* 
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.col {
-  display: flex;
-  flex-direction: column;
-} */
-
 .tree {
   display: flex;
   flex-direction: column;
@@ -71,18 +60,15 @@ input:focus{
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  /* border: 1px solid #ccc; */
   width: 80px;
   height: 30px;
 }
 
 .node-actions-container button {
-  /* circular button */
   display: flex;
   justify-content: center;
   align-items: center;
   color: #ffffff;
-  /* background: #d0d1da; */
   border: 1px solid #fdfcff;
   border-radius: 50%;
   width: 25px;
